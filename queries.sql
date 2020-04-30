@@ -10,15 +10,12 @@ SELECT [Order]."id", [Shipper]."CompanyName"  FROM [Order]
  WHERE [Order]."OrderDate" < '2012-08-09'
  ORDER BY [Order]."OrderDate" DESC
 -- Display the name and quantity of the products ordered in order with Id 10251. Sort by ProductName. Shows 3 records.
-SELECT O."OrderId", O."ProductId", P."ProductName", O."Quantity"
-FROM [OrderDetail] AS O
- JOIN [Product] AS P
-LEFT JOIN [Order] 
-ON O.OrderId= [Order].Id
-
+SELECT  p."ProductName", o."Quantity"
+FROM [Product] AS p
+JOIN [OrderDetail] AS o
+ON p."Id"= o."ProductId"
 WHERE "OrderId" = '10251'
-GROUP BY O."ProductId"
-ORDER BY P."ProductName";
+ORDER BY p."ProductName";
 
 -- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All columns should be labeled clearly. Displays 16,789 records.
 SELECT o."Id", c."CompanyName"
