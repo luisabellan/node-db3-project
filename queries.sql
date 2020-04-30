@@ -19,4 +19,9 @@ ON O.OrderId= [Order].Id
 WHERE "OrderId" = '10251'
 GROUP BY O."ProductId"
 ORDER BY P."ProductName";
+
 -- Display the OrderID, Customer's Company Name and the employee's LastName for every order. All columns should be labeled clearly. Displays 16,789 records.
+SELECT o."Id", c."CompanyName"
+FROM [Order] AS o
+JOIN [Customer] AS c
+ON o.CustomerId = c."Id";
