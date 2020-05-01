@@ -45,7 +45,7 @@ function findSteps(id) {
    FROM steps AS s
    JOIN [schemes] AS k
    ON s.id = k.id; */
-  // const steps =  db('steps').where({id}) 
+  //  const steps =  db('steps').where({id}) 
   var steps = db('steps as s').join('schemes as k', 's.id', 'k.id').select('s.id', 'k.scheme_name', 's.step_number', 's.instructions');
   return db(steps).where({
     id: id
