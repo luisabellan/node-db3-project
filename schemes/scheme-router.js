@@ -37,7 +37,7 @@ router.get('/:id/steps', (req, res) => {
   Schemes.findSteps(id)
   .then(steps => {
     if (steps.length) {
-      console.log(steps)
+     // console.log(steps)
       
       res.json(steps);
     } else {

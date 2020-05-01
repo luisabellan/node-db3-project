@@ -13,6 +13,21 @@ function findById(id) {
 }
 
 // Resolves to an array of all correctly ordered step for the given scheme: `[ { id: 17, scheme_name: 'Find the Holy Grail', step_number: 1, instructions: 'quest'}, { id: 18, scheme_name: 'Find the Holy Grail', step_number: 2, instructions: '...and quest'}, etc. ]`.
+
+function add(data) {
+
+
+    return db('schemes').insert(data);
+
+   
+
+}
+
+function remove(data) {
+    return db('schemes').where(data.id).first().del()
+
+}
+
 function findSteps(id) {
     /*  SELECT s.id, k.scheme_name, s.step_number,s.instructions 
      FROM steps AS s
@@ -31,22 +46,14 @@ function findSteps(id) {
 }
 
 
-function remove(scheme) {
-    return db('schemes').where(scheme.id).first().del()
-
-}
 
 
-function add(scheme) {
-    const [id] =  db('schemes').insert(scheme)
-	const sch =  db('schemes').where({ id }).first()
-    return  sch
 
-}
+
 module.exports = {
     find,
-    findById,
-    findSteps,
     add,
     remove,
+    findById,
+    findSteps
 }
