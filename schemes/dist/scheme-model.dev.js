@@ -31,8 +31,7 @@ function add(scheme) {
       }
     }
   });
-} // todo
-
+}
 
 function remove(id) {
   return db('schemes').where({
@@ -52,10 +51,34 @@ function findSteps(id) {
   });
 }
 
+function update(changes, id) {
+  var scheme;
+  return regeneratorRuntime.async(function update$(_context2) {
+    while (1) {
+      switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.next = 2;
+          return regeneratorRuntime.awrap(db("schemes").where({
+            id: id
+          }).update(changes));
+
+        case 2:
+          scheme = _context2.sent;
+          return _context2.abrupt("return", scheme);
+
+        case 4:
+        case "end":
+          return _context2.stop();
+      }
+    }
+  });
+}
+
 module.exports = {
   find: find,
   add: add,
   remove: remove,
   findById: findById,
-  findSteps: findSteps
+  findSteps: findSteps,
+  update: update
 };

@@ -19,9 +19,9 @@ async function add(scheme) {
     .then(ids => {
       return findById(ids[0]);
     });
-  }
+}
 
-// todo
+
 function remove(id) {
     return db('schemes').where({id}).first().del()
 
@@ -44,6 +44,13 @@ function findSteps(id) {
     return db(steps).where({ id });
 }
 
+async function update(changes,id) {
+
+    
+      const scheme =  await db("schemes").where({id}).update(changes);
+      return scheme
+      
+}
 
 
 
@@ -54,5 +61,6 @@ module.exports = {
     add,
     remove,
     findById,
-    findSteps
+    findSteps,
+    update
 }
