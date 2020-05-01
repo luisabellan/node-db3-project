@@ -14,17 +14,16 @@ function findById(id) {
 
 // Resolves to an array of all correctly ordered step for the given scheme: `[ { id: 17, scheme_name: 'Find the Holy Grail', step_number: 1, instructions: 'quest'}, { id: 18, scheme_name: 'Find the Holy Grail', step_number: 2, instructions: '...and quest'}, etc. ]`.
 
-function add(data) {
+async function add(scheme) {
+    await db('schemes').insert(scheme)
+    .then(ids => {
+      return findById(ids[0]);
+    });
+  }
 
-
-    return db('schemes').insert(data);
-
-   
-
-}
-
-function remove(data) {
-    return db('schemes').where(data.id).first().del()
+// todo
+function remove(id) {
+    return db('schemes').where({id}).first().del()
 
 }
 

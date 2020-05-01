@@ -15,12 +15,29 @@ function findById(id) {
 } // Resolves to an array of all correctly ordered step for the given scheme: `[ { id: 17, scheme_name: 'Find the Holy Grail', step_number: 1, instructions: 'quest'}, { id: 18, scheme_name: 'Find the Holy Grail', step_number: 2, instructions: '...and quest'}, etc. ]`.
 
 
-function add(data) {
-  return db('schemes').insert(data);
-}
+function add(scheme) {
+  return regeneratorRuntime.async(function add$(_context) {
+    while (1) {
+      switch (_context.prev = _context.next) {
+        case 0:
+          _context.next = 2;
+          return regeneratorRuntime.awrap(db('schemes').insert(scheme).then(function (ids) {
+            return findById(ids[0]);
+          }));
 
-function remove(data) {
-  return db('schemes').where(data.id).first().del();
+        case 2:
+        case "end":
+          return _context.stop();
+      }
+    }
+  });
+} // todo
+
+
+function remove(id) {
+  return db('schemes').where({
+    id: id
+  }).first().del();
 }
 
 function findSteps(id) {
