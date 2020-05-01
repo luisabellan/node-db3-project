@@ -16,24 +16,25 @@ function findById(id) {
 
 
 function findSteps(id) {
-  var steps = db('steps').where({
+  /*  SELECT s.id, k.scheme_name, s.step_number,s.instructions 
+   FROM steps AS s
+   JOIN [schemes] AS k
+   ON s.id = k.id; */
+  // const steps =  db('steps').where({id}) 
+  var steps = db('steps as s').join('schemes as k', 's.id', 'k.id').select('s.id', 'k.scheme_name', 's.step_number', 's.instructions');
+  return db(steps).where({
     id: id
-  }); //.del('scheme_id')
-  // remove(id)
-  // add(scheme_name)
-  //console.log(schemeName)
-
-  return steps;
+  });
 }
 
 function remove(id) {
-  return db('schemes').where({
-    id: id
-  }).first().del('scheme_id');
+  return db('schemes').where('scheme_id' === id).first().del();
 }
 
 module.exports = {
   find: find,
   findById: findById,
-  findSteps: findSteps
+  findSteps: findSteps,
+  remove: remove,
+  add: add
 };
