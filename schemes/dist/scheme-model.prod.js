@@ -1,0 +1,1 @@
+"use strict";var db=require("../data/config");function find(){return db("schemes")}function findById(e){return db("schemes").where({id:e}).first()}function findSteps(e){return db("steps").where({id:e})}function remove(e){return db("schemes").where({id:e}).first().del("scheme_id")}module.exports={find:find,findById:findById,findSteps:findSteps};

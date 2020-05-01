@@ -1,0 +1,1 @@
+"use strict";var express=require("express"),SchemeRouter=require("./schemes/scheme-router.js"),server=express();server.use(express.json()),server.use("/api/schemes",SchemeRouter),module.exports=server;
