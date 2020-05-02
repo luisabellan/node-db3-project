@@ -27,6 +27,7 @@ function remove(id) {
 
 }
 
+// stretch
 function findSteps(id) {
     /*  SELECT s.id, k.scheme_name, s.step_number,s.instructions 
      FROM steps AS s

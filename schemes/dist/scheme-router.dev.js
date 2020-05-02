@@ -29,7 +29,8 @@ router.get('/:id', function (req, res) {
       message: 'Failed to get schemes'
     });
   });
-});
+}); //stretch
+
 router.get('/:id/steps', function (req, res) {
   var id = req.params.id;
   Schemes.findSteps(id).then(function (steps) {

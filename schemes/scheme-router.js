@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
   });
 });
 
+//stretch
 router.get('/:id/steps', (req, res) => {
   const { id } = req.params;
 

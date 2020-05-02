@@ -37,7 +37,8 @@ function remove(id) {
   return db('schemes').where({
     id: id
   }).first().del();
-}
+} // stretch
+
 
 function findSteps(id) {
   /*  SELECT s.id, k.scheme_name, s.step_number,s.instructions 
